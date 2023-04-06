@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2023 Felipe Angelo Sgarbi
+Copyright (c) 2023 CovenFox Studios
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
