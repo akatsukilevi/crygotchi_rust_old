@@ -15,11 +15,14 @@
 		<img src="https://img.shields.io/badge/all_contributors-1-orange.svg" alt="All Contributors" />
 	</a>
 	<br />
-	<a href="https://makeapullrequest.com">
+	<a href="https://github.com/akatsukilevi/crygotchi">
 		<img src="https://img.shields.io/github/repo-size/akatsukilevi/crygotchi" alt="Repository size" />
 	</a>
-	<a href="https://makeapullrequest.com">
+	<a href="https://choosealicense.com/licenses/gpl-3.0">
 		<img src="https://img.shields.io/github/license/akatsukilevi/crygotchi" alt="License" />
+	</a>
+	<a href="CODE_OF_CONDUCT.md">
+		<img src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg" alt="Contributor Covenant" />
 	</a>
 </p>
 
@@ -55,5 +58,6 @@ Built binaries will be available at `target/{debug,release}` depending on the ve
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people
-([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
+Thanks goes to these wonderful people:
+
+- [Felipe Angelo Sgarbi - Lead Developer](https://akatsukilevi.github.io)
