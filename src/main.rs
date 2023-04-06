@@ -21,6 +21,7 @@ use bevy_inspector_egui::quick::WorldInspectorPlugin;
 use bevy_scene_hook::HookPlugin;
 
 use crygotchi::core::cursor::world_cursor::WorldCursorPlugin;
+use crygotchi::core::room::room::RoomPlugin;
 
 fn main() {
     App::new()
@@ -37,6 +38,7 @@ fn main() {
         .add_plugin(HookPlugin)
         //* Game Plugins
         .add_plugin(WorldCursorPlugin)
+        .add_plugin(RoomPlugin)
         //* Global systems
         .add_startup_system(setup)
         // .add_system(daylight_cycle)

@@ -1,0 +1,11 @@
+[dirt]
+name = "Dirt Tile"
+description = "Simple dirt tile, may grow grass THAT YOU CAN TOUCH"
+tile_type = 0
+color = "#a52a2a"
+
+[grass]
+name = "Grass Tile"
+description = "GO TOUCH IT!"
+tile_type = 0
+color = "#00ff00"
