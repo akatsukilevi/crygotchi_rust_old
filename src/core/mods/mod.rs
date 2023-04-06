@@ -15,6 +15,12 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-pub mod cursor;
-pub mod mods;
-pub mod room;
+use bevy::{prelude::Resource, reflect::TypeUuid};
+
+pub mod modloader;
+
+#[derive(Default, Debug, Resource, TypeUuid)]
+#[uuid = "ee7dda85-c724-4027-aa5e-97fd94ecaf57"]
+pub struct Modlist {
+    pub mods: Vec<String>,
+}
