@@ -5,21 +5,24 @@
 &nbsp;
 
 <p align="center">
-	<a href="https://makeapullrequest.com">
-		<img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" />
+	<a href="#contributors-">
+		<img src="https://img.shields.io/badge/all_contributors-1-orange.svg" alt="All Contributors" />
 	</a>
 	<a href="https://firsttimersonly.com/">
 		<img src="https://img.shields.io/badge/first--timers--only-friendly-blue.svg" alt="first-timers-only Friendly" />
 	</a>
-	<a href="#contributors-">
-		<img src="https://img.shields.io/badge/all_contributors-1-orange.svg" alt="All Contributors" />
+	<a href="https://makeapullrequest.com">
+		<img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" />
+	</a>
+	<a href="https://github.com/akatsukilevi/crygotchi/wiki">
+		<img src="https://img.shields.io/badge/documentation-wiki-brightgreen" alt="Documentation" />
 	</a>
 	<br />
-	<a href="https://github.com/akatsukilevi/crygotchi">
-		<img src="https://img.shields.io/github/repo-size/akatsukilevi/crygotchi" alt="Repository size" />
-	</a>
 	<a href="https://choosealicense.com/licenses/gpl-3.0">
 		<img src="https://img.shields.io/github/license/akatsukilevi/crygotchi" alt="License" />
+	</a>
+	<a href="https://github.com/akatsukilevi/crygotchi">
+		<img src="https://img.shields.io/github/repo-size/akatsukilevi/crygotchi" alt="Repository size" />
 	</a>
 	<a href="CODE_OF_CONDUCT.md">
 		<img src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg" alt="Contributor Covenant" />
