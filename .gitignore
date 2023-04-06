@@ -1,6 +1,2 @@
 # Rust build artifacts
 /target
-
-# Closed assets
-/assets/Meshes/Sources
-/mods/core
