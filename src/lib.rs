@@ -16,3 +16,11 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
 pub mod core;
+
+#[derive(Clone, Eq, PartialEq, Debug, Hash, Default, bevy::prelude::States)]
+pub enum GameState {
+    #[default]
+    AssetLoading,
+    Startup,
+    Main,
+}

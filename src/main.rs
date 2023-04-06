@@ -16,15 +16,23 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
 use bevy::{pbr::CascadeShadowConfigBuilder, prelude::*};
+use bevy_asset_loader::prelude::*;
 use bevy_egui::EguiPlugin;
 use bevy_inspector_egui::quick::WorldInspectorPlugin;
 use bevy_scene_hook::HookPlugin;
 
 use crygotchi::core::cursor::world_cursor::WorldCursorPlugin;
 use crygotchi::core::room::room::RoomPlugin;
+use crygotchi::GameState;
 
 fn main() {
     App::new()
+        //* State management
+        .add_state::<GameState>()
+        .add_loading_state(
+            LoadingState::new(GameState::AssetLoading).continue_to_state(GameState::Startup),
+        )
+        .add_loading_state(LoadingState::new(GameState::Startup).continue_to_state(GameState::Main))
         //* Third-party Plugins
         .add_plugins(DefaultPlugins)
         .add_plugin(EguiPlugin)

@@ -20,6 +20,8 @@ use bevy_scene_hook::{HookedSceneBundle, SceneHook};
 use leafwing_input_manager::prelude::*;
 use serde::{Deserialize, Serialize};
 
+use crate::GameState;
+
 use super::cursor_actions::*;
 
 pub struct WorldCursorPlugin;
@@ -59,16 +61,19 @@ impl Plugin for WorldCursorPlugin {
             //* Plugins
             .add_plugin(InputManagerPlugin::<CursorActions>::default())
             //* Startup
-            .add_startup_system(create_world_cursor)
+            .add_system(create_world_cursor.in_schedule(OnEnter(GameState::Startup)))
             //* Input
-            .add_systems((
-                super::cursor_movement::move_up,
-                super::cursor_movement::move_down,
-                super::cursor_movement::move_left,
-                super::cursor_movement::move_right,
-            ))
+            .add_systems(
+                (
+                    super::cursor_movement::move_up,
+                    super::cursor_movement::move_down,
+                    super::cursor_movement::move_left,
+                    super::cursor_movement::move_right,
+                )
+                    .in_set(OnUpdate(GameState::Main)),
+            )
             //* State
-            .add_system(update_cursor_state);
+            .add_system(update_cursor_state.in_set(OnUpdate(GameState::Main)));
     }
 }
 
