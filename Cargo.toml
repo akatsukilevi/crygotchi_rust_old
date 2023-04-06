@@ -7,6 +7,8 @@ edition = "2021"
 bevy = { version = "0.10.1", features = ["dynamic_linking"] }
 bevy-inspector-egui = { version = "0.18.3", features = ["highlight_changes"] }
 bevy-scene-hook = "6.0.0"
+bevy_asset_loader = { version = "0.16.0", features = ["3d"] }
+bevy_common_assets = { version = "0.6.0", features = ["toml"] }
 bevy_egui = "0.20"
 block-mesh = "0.2.0"
 egui_dock = { version = "0.4.2", features = ["serde"] }
