@@ -7,10 +7,15 @@ edition = "2021"
 bevy = { version = "0.10.1", features = ["dynamic_linking"] }
 bevy-inspector-egui = { version = "0.18.3", features = ["highlight_changes"] }
 bevy-scene-hook = "6.0.0"
+bevy_asset = "0.10.1"
 bevy_asset_loader = { version = "0.16.0", features = ["3d"] }
 bevy_common_assets = { version = "0.6.0", features = ["toml", "ron"] }
 bevy_egui = "0.20"
+bevy_reflect = { version = "0.10.1", features = ["bevy"] }
+bevy_render = "0.10.1"
+bevy_window = { version = "0.10.1", features = ["serde", "serialize"] }
 block-mesh = "0.2.0"
+egui-gizmo = "0.10.0"
 egui_dock = { version = "0.4.2", features = ["serde"] }
 leafwing-input-manager = { version = "0.9.1", features = ["egui"] }
 serde = { version = "1.0.159", features = ["derive"] }

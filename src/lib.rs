@@ -17,6 +17,9 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 pub mod core;
 
+#[cfg(debug_assertions)]
+pub mod debug;
+
 #[derive(Clone, Eq, PartialEq, Debug, Hash, Default, bevy::prelude::States)]
 pub enum GameState {
     #[default]
@@ -24,3 +27,6 @@ pub enum GameState {
     Startup,
     Main,
 }
+
+#[derive(bevy::prelude::Component)]
+pub struct MainCamera;

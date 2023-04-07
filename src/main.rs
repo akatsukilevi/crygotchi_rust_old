@@ -18,15 +18,16 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 use bevy::{pbr::CascadeShadowConfigBuilder, prelude::*};
 use bevy_asset_loader::prelude::*;
 use bevy_egui::EguiPlugin;
-use bevy_inspector_egui::quick::WorldInspectorPlugin;
 use bevy_scene_hook::HookPlugin;
 
 use crygotchi::core::cursor::world_cursor::WorldCursorPlugin;
 use crygotchi::core::room::room::RoomPlugin;
-use crygotchi::GameState;
+use crygotchi::{GameState, MainCamera};
 
 fn main() {
-    App::new()
+    let mut app = App::new();
+
+    app
         //* State management
         .add_state::<GameState>()
         .add_loading_state(
@@ -36,14 +37,17 @@ fn main() {
         //* Third-party Plugins
         .add_plugins(DefaultPlugins)
         .add_plugin(EguiPlugin)
-        .add_plugin(WorldInspectorPlugin::new())
         .add_plugin(HookPlugin)
         //* Game Plugins
         .add_plugin(WorldCursorPlugin)
         .add_plugin(RoomPlugin)
         //* Global systems
-        .add_startup_system(setup)
-        .run();
+        .add_startup_system(setup);
+
+    #[cfg(debug_assertions)]
+    app.add_plugin(crygotchi::debug::debug_ui::DebugUIPlugin);
+
+    app.run();
 }
 
 fn setup(
@@ -76,8 +80,11 @@ fn setup(
     });
 
     // Camera
-    commands.spawn((Camera3dBundle {
-        transform: Transform::from_xyz(0.0, 50.0, 50.0).looking_at(Vec3::ZERO, Vec3::Y),
-        ..default()
-    },));
+    commands.spawn((
+        Camera3dBundle {
+            transform: Transform::from_xyz(0.0, 50.0, 50.0).looking_at(Vec3::ZERO, Vec3::Y),
+            ..default()
+        },
+        MainCamera,
+    ));
 }

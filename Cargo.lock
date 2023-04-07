@@ -1469,10 +1469,15 @@ dependencies = [
  "bevy",
  "bevy-inspector-egui",
  "bevy-scene-hook",
+ "bevy_asset",
  "bevy_asset_loader",
  "bevy_common_assets",
  "bevy_egui",
+ "bevy_reflect",
+ "bevy_render",
+ "bevy_window",
  "block-mesh",
+ "egui-gizmo",
  "egui_dock",
  "leafwing-input-manager",
  "serde",
@@ -1559,6 +1564,16 @@ dependencies = [
  "epaint",
  "nohash-hasher",
  "serde",
+]
+
+[[package]]
+name = "egui-gizmo"
+version = "0.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b1c043f3afe520e62a91da97cf718314c36dfdc75be4557ff0caca9a488e2fa0"
+dependencies = [
+ "egui",
+ "glam 0.22.0",
 ]
 
 [[package]]
@@ -1860,6 +1875,12 @@ name = "glam"
 version = "0.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2b8509e6791516e81c1a630d0bd7fbac36d2fa8712a9da8662e716b52d5051ca"
+
+[[package]]
+name = "glam"
+version = "0.22.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "12f597d56c1bd55a811a1be189459e8fad2bbc272616375602443bdfb37fa774"
 
 [[package]]
 name = "glam"
