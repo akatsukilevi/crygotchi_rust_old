@@ -22,7 +22,6 @@ use bevy_inspector_egui::quick::WorldInspectorPlugin;
 use bevy_scene_hook::HookPlugin;
 
 use crygotchi::core::cursor::world_cursor::WorldCursorPlugin;
-use crygotchi::core::mods::modloader::ModloaderPlugin;
 use crygotchi::core::room::room::RoomPlugin;
 use crygotchi::GameState;
 
@@ -40,7 +39,6 @@ fn main() {
         .add_plugin(WorldInspectorPlugin::new())
         .add_plugin(HookPlugin)
         //* Game Plugins
-        .add_plugin(ModloaderPlugin)
         .add_plugin(WorldCursorPlugin)
         .add_plugin(RoomPlugin)
         //* Global systems
