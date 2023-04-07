@@ -1,0 +1,7 @@
+RoomTile (
+	id: "grass",
+	name: "Grass Tile",
+	description: "GO TOUCH IT!",
+	tile_type: Floor,
+	color: Rgba ( red: 0.13, green: 0.54, blue: 0.13, alpha: 1.0 )
+)
