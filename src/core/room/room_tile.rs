@@ -15,30 +15,44 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-use bevy::prelude::{Color, Component, Resource, Vec2};
+use bevy::{
+    asset::AssetServer,
+    prelude::{Color, Component, Handle, Resource, Vec2},
+    reflect::{Reflect, TypeUuid},
+};
+use bevy_asset_loader::prelude::AssetCollection;
 use serde::{Deserialize, Serialize};
+
+#[derive(AssetCollection, Debug, Reflect, Resource)]
+pub struct TileAssets {
+    #[asset(path = "Mods", collection(typed))]
+    pub tiles: Vec<Handle<RoomTile>>,
+}
+
+#[derive(Resource)]
+pub struct RoomTiles(pub Vec<RoomTile>);
+
+#[derive(Default, Debug, Serialize, Deserialize, Resource, TypeUuid)]
+#[uuid = "ba2265d0-51d5-4e8c-b878-443b36ea63b6"]
+pub struct RoomTile {
+    pub name: String,
+    pub description: String,
+    pub tile_type: RoomTileType,
+    pub color: Color,
+}
 
 #[derive(Default, Debug, Serialize, Deserialize)]
 pub enum RoomTileType {
     #[default]
-    Floor,
-    Decoration,
-}
-
-#[derive(Default, Debug, Serialize, Deserialize, Resource)]
-pub struct RoomTile {
-    id: String,
-    name: String,
-    description: String,
-    tile_type: RoomTileType,
-    color: Color,
+    Floor = 0,
+    Decoration = 1,
 }
 
 #[derive(Default, Debug, Serialize, Deserialize, Component)]
 pub struct RoomTileInstance<D: RoomTileData> {
-    tile: String,
-    position: Vec2,
-    data: D,
+    pub tile: String,
+    pub position: Vec2,
+    pub data: D,
 }
 
 pub trait RoomTileData {

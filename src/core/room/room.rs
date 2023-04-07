@@ -16,11 +16,31 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
 use bevy::prelude::*;
+use bevy_asset_loader::prelude::*;
+use bevy_common_assets::ron::RonAssetPlugin;
+use bevy_inspector_egui::quick::ResourceInspectorPlugin;
+
+use crate::GameState;
+
+use super::room_tile::*;
 
 pub struct RoomPlugin;
-
 impl Plugin for RoomPlugin {
-    fn build(&self, _app: &mut App) {
-        // Implement systems here
+    fn build(&self, app: &mut App) {
+        app
+            //* Plugins
+            .add_plugin(RonAssetPlugin::<RoomTile>::new(&["tiles.ron"]))
+            .add_plugin(ResourceInspectorPlugin::<TileAssets>::default())
+            //* Loaders
+            .add_collection_to_loading_state::<_, TileAssets>(GameState::AssetLoading)
+            .add_system(test_function.in_schedule(OnEnter(GameState::Main)));
+    }
+}
+
+fn test_function(assets_collection: Res<TileAssets>, tiles: Res<Assets<RoomTile>>) {
+    for tile in &assets_collection.tiles {
+        if let Some(tile_data) = tiles.get(tile) {
+            info!("Found tile {}", tile_data.name);
+        }
     }
 }
