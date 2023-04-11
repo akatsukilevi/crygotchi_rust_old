@@ -17,8 +17,9 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 use bevy::{
     asset::AssetServer,
-    prelude::{Color, Component, Handle, Resource, Vec2},
+    prelude::{Color, Handle, Resource, Vec2},
     reflect::{Reflect, TypeUuid},
+    utils::hashbrown::HashMap,
 };
 use bevy_asset_loader::prelude::AssetCollection;
 use serde::{Deserialize, Serialize};
@@ -30,7 +31,9 @@ pub struct TileAssets {
 }
 
 #[derive(Resource)]
-pub struct RoomTiles(pub Vec<RoomTile>);
+pub struct RoomTiles {
+    pub tiles: HashMap<Vec2, RoomTileInstance>,
+}
 
 #[derive(Default, Debug, Serialize, Deserialize, Resource, TypeUuid)]
 #[uuid = "ba2265d0-51d5-4e8c-b878-443b36ea63b6"]
@@ -48,14 +51,8 @@ pub enum RoomTileType {
     Decoration = 1,
 }
 
-#[derive(Default, Debug, Serialize, Deserialize, Component)]
-pub struct RoomTileInstance<D: RoomTileData> {
+#[derive(Default, Debug, Serialize, Deserialize)]
+pub struct RoomTileInstance {
     pub tile: String,
     pub position: Vec2,
-    pub data: D,
-}
-
-pub trait RoomTileData {
-    fn serialize(&self);
-    fn deserialize(&self);
 }

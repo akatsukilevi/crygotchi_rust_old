@@ -15,26 +15,35 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-use bevy::prelude::*;
+use bevy::{prelude::*, utils::hashbrown::HashMap};
 use bevy_asset_loader::prelude::*;
 use bevy_common_assets::ron::RonAssetPlugin;
-use bevy_inspector_egui::quick::ResourceInspectorPlugin;
 
 use crate::GameState;
 
-use super::room_tile::*;
+use super::{room_tile::*, RoomState};
 
 pub struct RoomPlugin;
 impl Plugin for RoomPlugin {
     fn build(&self, app: &mut App) {
         app
+            //* States
+            .add_state::<RoomState>()
+            //* Base resources
             //* Plugins
             .add_plugin(RonAssetPlugin::<RoomTile>::new(&["tiles.ron"]))
-            .add_plugin(ResourceInspectorPlugin::<TileAssets>::default())
             //* Loaders
             .add_collection_to_loading_state::<_, TileAssets>(GameState::AssetLoading)
+            //* Systems
+            .add_system(setup.in_schedule(OnEnter(GameState::Startup)))
             .add_system(test_function.in_schedule(OnEnter(GameState::Main)));
     }
+}
+
+fn setup(mut commands: Commands) {
+    commands.insert_resource(RoomTiles {
+        tiles: HashMap::new(),
+    });
 }
 
 fn test_function(assets_collection: Res<TileAssets>, tiles: Res<Assets<RoomTile>>) {

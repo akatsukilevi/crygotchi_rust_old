@@ -6,9 +6,9 @@ use egui_gizmo::GizmoMode;
 
 use crate::MainCamera;
 
-use super::UiState;
+use super::DebugUiState;
 
-pub fn set_gizmo_mode(input: Res<Input<KeyCode>>, mut ui_state: ResMut<UiState>) {
+pub fn set_gizmo_mode(input: Res<Input<KeyCode>>, mut ui_state: ResMut<DebugUiState>) {
     for (key, mode) in [
         (KeyCode::R, GizmoMode::Rotate),
         (KeyCode::T, GizmoMode::Translate),

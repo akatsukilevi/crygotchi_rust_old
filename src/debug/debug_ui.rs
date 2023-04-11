@@ -24,13 +24,14 @@ use bevy_window::PrimaryWindow;
 use crate::MainCamera;
 
 use super::debug_gizmos::set_gizmo_mode;
-use super::UiState;
+use super::DebugUiState;
 
 pub struct DebugUIPlugin;
 
 impl Plugin for DebugUIPlugin {
     fn build(&self, app: &mut App) {
-        app.insert_resource(UiState::new())
+        app.insert_resource(DebugUiState::new())
+            .add_plugin(bevy_inspector_egui::DefaultInspectorConfigPlugin)
             .add_system(
                 show_ui_system
                     .in_base_set(CoreSet::PostUpdate)
@@ -54,14 +55,14 @@ fn show_ui_system(world: &mut World) {
         .get_single(world) else { return };
     let mut egui_context = egui_context.clone();
 
-    world.resource_scope::<UiState, _>(|world, mut ui_state| {
+    world.resource_scope::<DebugUiState, _>(|world, mut ui_state| {
         ui_state.ui(world, egui_context.get_mut())
     });
 }
 
 // make camera only render to view not obstructed by UI
 fn set_camera_viewport(
-    ui_state: Res<UiState>,
+    ui_state: Res<DebugUiState>,
     primary_window: Query<&mut Window, With<PrimaryWindow>>,
     egui_settings: Res<bevy_egui::EguiSettings>,
     mut cameras: Query<&mut Camera, With<MainCamera>>,

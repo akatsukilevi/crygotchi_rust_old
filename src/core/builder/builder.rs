@@ -15,6 +15,17 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-pub mod builder;
-pub mod cursor;
-pub mod room;
+use bevy::prelude::*;
+
+pub struct BuilderPlugin;
+impl Plugin for BuilderPlugin {
+    fn build(&self, _app: &mut App) {
+        /*
+        app
+            .add_plugin(RonAssetPlugin::<RoomTile>::new(&["tiles.ron"]))
+            .add_plugin(ResourceInspectorPlugin::<TileAssets>::default())
+            .add_collection_to_loading_state::<_, TileAssets>(GameState::AssetLoading)
+            .add_system(test_function.in_schedule(OnEnter(GameState::Main)));
+        */
+    }
+}

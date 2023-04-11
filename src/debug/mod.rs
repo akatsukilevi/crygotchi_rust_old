@@ -16,13 +16,16 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
 use std::any::TypeId;
+use std::cell::RefCell;
 
 use bevy::prelude::*;
 use bevy_asset::HandleId;
 use bevy_inspector_egui::bevy_inspector::hierarchy::SelectedEntities;
-use bevy_inspector_egui::egui;
+use bevy_inspector_egui::egui::{self};
 use egui_dock::Tree;
 use egui_gizmo::GizmoMode;
+
+use crate::core::room::room_debug::RoomDebuggerState;
 
 pub mod debug_assets;
 pub mod debug_gizmos;
@@ -39,27 +42,31 @@ pub enum InspectorSelection {
 }
 
 #[derive(Resource)]
-pub struct UiState {
+pub struct DebugUiState {
     pub tree: Tree<EguiWindow>,
     pub viewport_rect: egui::Rect,
     pub selected_entities: SelectedEntities,
     pub selection: InspectorSelection,
     pub gizmo_mode: GizmoMode,
+    pub room_editor: RoomDebuggerState,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Eq, PartialEq, Hash)]
 pub enum EguiWindow {
     GameView,
     Hierarchy,
     Resources,
     Assets,
     Inspector,
+    Room,
+    Save,
 }
 
 pub struct TabViewer<'a> {
-    pub world: &'a mut World,
+    pub world: RefCell<World>,
     pub selected_entities: &'a mut SelectedEntities,
     pub selection: &'a mut InspectorSelection,
     pub viewport_rect: &'a mut egui::Rect,
     pub gizmo_mode: GizmoMode,
+    pub room_editor: &'a mut RoomDebuggerState,
 }

@@ -20,6 +20,7 @@ use bevy_asset_loader::prelude::*;
 use bevy_egui::EguiPlugin;
 use bevy_scene_hook::HookPlugin;
 
+use crygotchi::core::builder::builder::BuilderPlugin;
 use crygotchi::core::cursor::world_cursor::WorldCursorPlugin;
 use crygotchi::core::room::room::RoomPlugin;
 use crygotchi::{GameState, MainCamera};
@@ -41,6 +42,7 @@ fn main() {
         //* Game Plugins
         .add_plugin(WorldCursorPlugin)
         .add_plugin(RoomPlugin)
+        .add_plugin(BuilderPlugin)
         //* Global systems
         .add_startup_system(setup);
 

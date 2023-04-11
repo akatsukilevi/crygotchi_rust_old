@@ -17,4 +17,14 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 pub mod room;
 
-mod room_tile;
+pub mod room_tile;
+
+#[cfg(debug_assertions)]
+pub mod room_debug;
+
+#[derive(Clone, Eq, PartialEq, Debug, Hash, Default, bevy::prelude::States)]
+pub enum RoomState {
+    #[default]
+    Explorer,
+    Builder,
+}
